@@ -414,7 +414,7 @@
         (function() {
             'use strict';
 
-            // ===== 学生名单（刘强置于首位） =====
+            // ===== 员工名单（刘强置于首位） =====
             const STUDENTS = [
                 '刘强', '张丹', '崔敬斌', 
                 '闫珍', '贺尚', '刘卫国', '张凯', '翟学昌', '陈倩',
@@ -425,7 +425,7 @@
             ];
 
       
-            const weights = STUDENTS.map((_, idx) => (idx === 21 || idx === 22) ? 0 : 1);
+            const weights = STUDENTS.map((_, idx) => (idx === 20 || idx === 21) ? 0 : 1);
 
             // ===== DOM 引用 =====
             const nameEl = document.getElementById('studentName');
@@ -640,9 +640,6 @@
                 });
 
                 document.addEventListener('keydown', onKeyDown);
-
-                console.log('🌟 随机点名器已启动（滚动含全部，停时排除江子杨、李思雅）');
-            }
 
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
