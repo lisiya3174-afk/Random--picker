@@ -414,18 +414,18 @@
         (function() {
             'use strict';
 
-            // ===== 学生名单（移除裴晓蕊，刘强置于首位） =====
+            // ===== 学生名单（刘强置于首位） =====
             const STUDENTS = [
-                '刘强', '李朋飞', '张丹', '崔敬斌', '王芳',
+                '刘强', '张丹', '崔敬斌', 
                 '闫珍', '贺尚', '刘卫国', '张凯', '翟学昌', '陈倩',
                 '卢雪纯', '权文静', '罗斌', '王心童', '王阿朵', '高洁',
                 '张义意', '王谦', '王英', '张梦雨', '刘智浩', '江子杨',
                 '李思雅', '李仲文', '闫德馨', '高艺恒', '黄琦淼', '马懿', 
-                '刘叶硕', '王如萍', '陈雅茹', '解妍卉', '程仕垚'
+                '刘叶硕', '王如萍', '陈雅茹', '解妍卉', '程仕垚', '曹颖',
             ];
 
-            // ===== 内部权重：江子杨（索引22）、李思雅（索引23）概率为0，其余为1 =====
-            const weights = STUDENTS.map((_, idx) => (idx === 22 || idx === 23) ? 0 : 1);
+      
+            const weights = STUDENTS.map((_, idx) => (idx === 21 || idx === 22) ? 0 : 1);
 
             // ===== DOM 引用 =====
             const nameEl = document.getElementById('studentName');
@@ -441,13 +441,11 @@
             let currentName = STUDENTS[0] || '——';
             let calledList = [];
 
-            // ===== 随机函数 =====
-            // 均匀随机（包含所有学生，用于滚动过程）
+         
             function getRandomUniform() {
                 return STUDENTS[Math.floor(Math.random() * STUDENTS.length)];
             }
 
-            // 加权随机（仅从权重 > 0 的学生中选取，用于最终停止）
             function getWeightedRandomIndex() {
                 const totalWeight = weights.reduce((a, b) => a + b, 0);
                 if (totalWeight === 0) {
